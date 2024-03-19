@@ -1,5 +1,6 @@
 import "./App.css";
 import { Counter } from "./components/Counter.jsx";
+import { HelloWorld } from "./components/Hello.jsx";
 import ShowMeTheTime from "./components/ShowTimeBBy.jsx";
 import Welcome from "./components/Welcome.jsx";
 
@@ -10,9 +11,8 @@ function App() {
 
   return (
     <>
-      <Welcome age={5} />
+      <HelloWorld />
       <Welcome name="Cahal Kestis" age={30} />
-      <Welcome name="Calígula 9000" age={9999} />
       <ShowMeTheTime alert={showTime}></ShowMeTheTime>
       <Counter sumVal={1} subVal={1} resetVal={0} />
     </>
