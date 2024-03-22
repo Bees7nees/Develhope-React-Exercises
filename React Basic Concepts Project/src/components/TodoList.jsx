@@ -1,18 +1,23 @@
-import { useState } from "react"
+import { useState } from "react";
 
 export function TodoList() {
-    const [todos, setTodos] = useState([]);
-    const addTodo = (string) => {
-        setTodos([...todos, { string, completed: false }])
+  const [todos, setTodos] = useState([]);
+  const addTodo = (string) => {
+    setTodos([...todos, { string, completed: false }]);
+  };
+  const toggleCompleted = (index) => {
+    const updatedTodos = todos.map((todo, i) =>
+      i === index ? { ...todo, completed: !todo.completed } : todo
+    );
+    setTodos(updatedTodos);
     };
-    const toggleCompleted = () => {
-        setTodos
-    }
-    return (
-        <>
 
-        </>
-    )
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/todos")
+      .then((response) => response.json())
+      .then((data) => setTodos(data));
+  }, []);
+  return <></>;
 }
 
 /* 
