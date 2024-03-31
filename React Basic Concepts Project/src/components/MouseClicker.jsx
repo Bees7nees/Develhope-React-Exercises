@@ -14,7 +14,7 @@ export function MouseClicker() {
     }
 
     function printImgSrc() {
-        console.log(event.target.src)
+        event.stopPropagation(console.log(event.target.src))
     }
 
     return (

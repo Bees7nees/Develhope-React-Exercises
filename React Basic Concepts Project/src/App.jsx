@@ -7,6 +7,7 @@ import { InteractiveWelcome } from "./components/InteractiveWelcome.jsx";
 import { Login } from "./components/Login.jsx";
 import { MouseClicker } from "./components/MouseClicker.jsx";
 import ShowMeTheTime from "./components/ShowTimeBBy.jsx";
+import { UncontrolledLogin } from "./components/UncontrolledLogin.jsx";
 import Welcome from "./components/Welcome.jsx";
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
       <br />
       <InteractiveWelcome />
       <Login />
+      <UncontrolledLogin />
     </>
   );
 }
