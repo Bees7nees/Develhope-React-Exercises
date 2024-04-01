@@ -1,5 +1,3 @@
-export function CounterDisplay ({counter}) {
-    return (
-        <h2>{counter}</h2>
-    )
+export function CounterDisplay({ counter }) {
+  return <h2>{counter}</h2>;
 }

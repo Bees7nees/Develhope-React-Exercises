@@ -1,6 +1,7 @@
 import "./App.css";
 import { Clock } from "./components/Clock.jsx";
 import { Counter } from "./components/Counter.jsx";
+import { FocusableInput } from "./components/FocusableInput.jsx";
 import GithubUser from "./components/GithubUser.jsx";
 import { HelloWorld } from "./components/HelloWorld.jsx";
 import { InteractiveWelcome } from "./components/InteractiveWelcome.jsx";
@@ -29,6 +30,8 @@ function App() {
       <InteractiveWelcome />
       <Login />
       <UncontrolledLogin />
+      <br />
+      <FocusableInput />
     </>
   );
 }

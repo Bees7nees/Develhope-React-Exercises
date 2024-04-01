@@ -21,8 +21,10 @@ export function UncontrolledLogin() {
       <input type="text" name="username" />
       <input type="password" name="password" />
       <input type="checkbox" name="remember" />
-      <button type="submit">Login</button>
-      <button type="reset">Clear</button>
+      <section style={{ display: "flex", justifyContent: "center" }}>
+        <button type="submit">Login</button>
+        <button type="reset">Clear</button>
+      </section>
     </form>
   );
 }
