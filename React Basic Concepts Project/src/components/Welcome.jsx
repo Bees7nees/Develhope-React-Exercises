@@ -2,10 +2,12 @@
 
 import AgeComponent from "./AgeComponent";
 
+import classes from "./Welcome.module.scss";
+
 function Welcome({ name = "Guest", age }) {
     return (
         <>
-            <p>Welcome, <strong>{name}</strong></p>
+            <p className={classes.niceWelcome}>Welcome, <strong>{name}</strong></p>
             <AgeComponent age={age}></AgeComponent>
         </>
     );

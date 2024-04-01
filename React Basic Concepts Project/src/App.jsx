@@ -2,6 +2,7 @@ import "./App.css";
 import { Clock } from "./components/Clock.jsx";
 import { Color } from "./components/Color.jsx";
 import { Colors } from "./components/Colors.jsx";
+import { Container } from "./components/Container.jsx";
 import { Counter } from "./components/Counter.jsx";
 import { FocusableInput } from "./components/FocusableInput.jsx";
 import GithubUser from "./components/GithubUser.jsx";
@@ -21,31 +22,33 @@ function App() {
 
   return (
     <>
-      <HelloWorld />
-      <Welcome name="Cahal Kestis" age={30} />
-      <ShowMeTheTime alert={showTime}></ShowMeTheTime>
-      <Clock />
-      <Counter sumVal={1} subVal={1} resetVal={0} />
-      <br />
-      <MouseClicker />
-      <GithubUser username={"Bees7nees"} />
-      <br />
-      <InteractiveWelcome />
-      <Login />
-      <UncontrolledLogin />
-      <br />
-      <FocusableInput />
-      <br />
-      <Color color={{ id: 1, name: "red" }} />
-      <br />
-      <Colors
-        colors={[
-          { id: 1, name: "red" },
-          { id: 2, name: "blue" },
-          { id: 3, name: "green" },
-        ]}
-      />
-      <TodoList />
+      <Container title="Hola hola caracola 🐌">
+        <HelloWorld />
+        <Welcome name="Cahal Kestis" age={30} />
+        <ShowMeTheTime alert={showTime}></ShowMeTheTime>
+        <Clock />
+        <Counter sumVal={1} subVal={1} resetVal={0} />
+        <br />
+        <MouseClicker />
+        <GithubUser username={"Bees7nees"} />
+        <br />
+        <InteractiveWelcome />
+        <Login />
+        <UncontrolledLogin />
+        <br />
+        <FocusableInput />
+        <br />
+        <Color color={{ id: 1, name: "red" }} />
+        <br />
+        <Colors
+          colors={[
+            { id: 1, name: "red" },
+            { id: 2, name: "blue" },
+            { id: 3, name: "green" },
+          ]}
+        />
+        <TodoList />
+      </Container>
     </>
   );
 }
