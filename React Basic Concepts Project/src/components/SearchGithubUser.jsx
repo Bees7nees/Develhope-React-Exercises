@@ -2,11 +2,14 @@ import { useState } from "react";
 import GithubUser from "./GithubUser";
 
 export function SearchGithubUser() {
-  const [username, setUsername] = useState(null);
+  const [username, setUsername] = useState([]);
 
   function handleUsernameChange(event) {
     event.preventDefault();
-    setUsername([...username, {id: Date.now(), text: event.target.value}]);
+    setUsername([
+      ...username,
+      { id: Date.now(), text: event.target.elements.username.value },
+    ]);
     event.target.elements.username.value = "";
   }
 
@@ -18,15 +21,14 @@ export function SearchGithubUser() {
           type="text"
           name="username"
           placeholder="Enter username"
-          onChange={() => setUsername(event.target.value)}
         />
         <button type="submit">Search</button>
-          </form>
-          <ul>
-              {username.map((userInput) => (
-                <GithubUser key={userInput} username={userInput} />
-              ))}
-          </ul>
+      </form>
+      <ul>
+        {username.length > 0 && username.map((user) => (
+          <GithubUser key={user.id} username={user.text} />
+        ))}
+      </ul>
     </div>
   );
 }

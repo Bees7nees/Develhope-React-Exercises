@@ -31,6 +31,8 @@ function App() {
     <>
       <Container title="Hola hola caracola 🐌">
         <HelloWorld />
+        <br />
+        <SearchGithubUser />
         <Welcome name="Cahal Kestis" age={30} />
         <ShowMeTheTime alert={showTime}></ShowMeTheTime>
         <LanguageContext.Provider value={language}>
@@ -44,7 +46,6 @@ function App() {
         <Counter sumVal={1} subVal={1} resetVal={0} />
         <br />
         <MouseClicker />
-        <SearchGithubUser />
         <br />
         <InteractiveWelcome />
         <Login />
