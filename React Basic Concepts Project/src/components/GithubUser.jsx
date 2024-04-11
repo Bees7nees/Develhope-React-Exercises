@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 
+GithubUser.propTypes = {
+    username: PropTypes.string,
+};
 
 function GithubUser({ username }) {
     const [userData, setUserData] = useState({});
@@ -9,9 +13,9 @@ function GithubUser({ username }) {
     useEffect(() => {
         fetch(`https://api.github.com/users/${username}`)
             .then((response) => response.json())
-            .then((data) => setUserData(data))
+            .then((json) => setUserData(json))
             .catch(() => {
-                console.error("An error has occured :(")
+                console.error("An error has occurred :(")
                 setDisplayError(true)
             })
             .finally(() => {
@@ -21,7 +25,7 @@ function GithubUser({ username }) {
 
     return (   
         <>
-            { displayError && <h1>An error has occured uring fetch process</h1> }
+            { displayError && <h1>An error has occurred uring fetch process</h1> }
             <p>{userData.name}</p>
             <p>{userData.login}</p>
             <img src={userData.avatar_url} alt="payaso" />

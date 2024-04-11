@@ -5,8 +5,6 @@ import { Color } from "./components/Color.jsx";
 import { Colors } from "./components/Colors.jsx";
 import { Container } from "./components/Container.jsx";
 import { Counter } from "./components/Counter.jsx";
-import { FocusableInput } from "./components/FocusableInput.jsx";
-import GithubUser from "./components/GithubUser.jsx";
 import { HelloWorld } from "./components/HelloWorld.jsx";
 import { InteractiveWelcome } from "./components/InteractiveWelcome.jsx";
 import { Login } from "./components/Login.jsx";
@@ -16,6 +14,7 @@ import { TodoList } from "./components/TodoList.jsx";
 import { UncontrolledLogin } from "./components/UncontrolledLogin.jsx";
 import Welcome from "./components/Welcome.jsx";
 import { LanguageContext } from "./contexts/LanguageContext.jsx";
+import { SearchGithubUser } from "./components/SearchGithubUser.jsx";
 
 function App() {
   function showTime() {
@@ -45,13 +44,11 @@ function App() {
         <Counter sumVal={1} subVal={1} resetVal={0} />
         <br />
         <MouseClicker />
-        <GithubUser username={"Bees7nees"} />
+        <SearchGithubUser />
         <br />
         <InteractiveWelcome />
         <Login />
         <UncontrolledLogin />
-        <br />
-        <FocusableInput />
         <br />
         <ul>
           <Color color={{ id: 1, name: "red" }} />
