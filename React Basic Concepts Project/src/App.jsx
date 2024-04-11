@@ -1,3 +1,4 @@
+import { useContext, useState } from "react";
 import "./App.css";
 import { Clock } from "./components/Clock.jsx";
 import { Color } from "./components/Color.jsx";
@@ -14,10 +15,17 @@ import ShowMeTheTime from "./components/ShowTimeBBy.jsx";
 import { TodoList } from "./components/TodoList.jsx";
 import { UncontrolledLogin } from "./components/UncontrolledLogin.jsx";
 import Welcome from "./components/Welcome.jsx";
+import { LanguageContext } from "./contexts/LanguageContext.jsx";
 
 function App() {
   function showTime() {
     alert(new Date().toLocaleTimeString());
+  }
+
+  const [language, setLanguage] = useState(useContext(LanguageContext));
+
+  function handleLanguageChange(event) {
+    setLanguage(event.target.value);
   }
 
   return (
@@ -26,7 +34,14 @@ function App() {
         <HelloWorld />
         <Welcome name="Cahal Kestis" age={30} />
         <ShowMeTheTime alert={showTime}></ShowMeTheTime>
-        <Clock />
+        <LanguageContext.Provider value={language}>
+          <select value={language} onChange={handleLanguageChange}>
+            <option value="english">English</option>
+            <option value="spanish">Spanish</option>
+          </select>
+          <Clock />
+        </LanguageContext.Provider>
+        <br />
         <Counter sumVal={1} subVal={1} resetVal={0} />
         <br />
         <MouseClicker />
@@ -38,9 +53,12 @@ function App() {
         <br />
         <FocusableInput />
         <br />
-        <Color color={{ id: 1, name: "red" }} />
+        <ul>
+          <Color color={{ id: 1, name: "red" }} />
+        </ul>
         <br />
         <Colors
+          title={"Look at my favorite colors :)))"}
           colors={[
             { id: 1, name: "red" },
             { id: 2, name: "blue" },

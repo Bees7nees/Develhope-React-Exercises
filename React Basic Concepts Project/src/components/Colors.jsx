@@ -1,10 +1,23 @@
-export function Colors({ colors }) {
+import PropTypes from "prop-types";
+import { Color } from "./Color";
+
+Colors.propTypes = {
+  title: PropTypes.string,
+  colors: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+    })
+  ),
+};
+
+export function Colors({ colors, title }) {
   return (
     <>
-      <h3>Look, more colors 8)))</h3>
+      <h3>{title}</h3>
       <ul>
         {colors.map((color) => (
-          <li key={color.id}>{color.name}</li>
+          <Color key={color.id} color={color} />
         ))}
       </ul>
     </>

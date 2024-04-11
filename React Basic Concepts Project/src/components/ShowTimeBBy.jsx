@@ -1,10 +1,9 @@
 function ShowMeTheTime({ alert }) {
-    
-    return (
-        <>
-            <button onClick={alert}>⌚</button>
-        </>
-    )
+  return (
+    <>
+      <button onClick={alert}>⌚</button>
+    </>
+  );
 }
 
-export default ShowMeTheTime
+export default ShowMeTheTime;

@@ -1,5 +1,11 @@
 import { useState } from "react";
-import classes from "./Container.module.scss";
+import classes from "../styles/Container.module.scss";
+import PropTypes from "prop-types";
+
+Container.propTypes = {
+  children: PropTypes.node,
+  title: PropTypes.string,
+};
 
 export function Container({ children, title }) {
   const [showContent, setShowContent] = useState(false);

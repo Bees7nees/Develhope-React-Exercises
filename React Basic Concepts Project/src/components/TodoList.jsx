@@ -1,33 +1,30 @@
 import { useState } from "react";
 
 export function TodoList() {
-  const [todos, setTodos] = useState([]);
+  const [items, setItems] = useState([]);
 
-  function addTodo(event) {
+  function handleAddItem(event) {
     event.preventDefault();
-    setTodos([
-      ...todos,
-      { id: Date.now(), text: event.target.elements[0].value },
-    ]);
-    event.target.reset();
+    setItems([...items, { id: Date.now(), text: event.target.elements.text.value }]);
+    event.target.elements.text.value = "";
   }
 
-  function deleteTodo(todo) {
-    setTodos(todos.filter((t) => t !== todo));
+  function handleRemoveItem(id) {
+    setItems(items.filter((item) => item.id !== id));
   }
 
   return (
     <>
-      <form onSubmit={addTodo}>
-        <input type="text" />
+      <form onSubmit={handleAddItem}>
+        <input name="text" type="text" />
         <button type="submit">Add</button>
         <button type="reset">Clear</button>
       </form>
       <ul>
-        {todos.map((todo) => (
-          <li key={todo.id}>
-            {todo.text}
-            <button onClick={() => deleteTodo(todo)}>Delete</button>
+        {items.map((item) => (
+          <li key={item.id}>
+            {item.text}
+            <button onClick={() => handleRemoveItem(item.id)}>Delete</button>
           </li>
         ))}
       </ul>

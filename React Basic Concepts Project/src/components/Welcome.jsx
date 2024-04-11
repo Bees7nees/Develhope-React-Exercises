@@ -1,13 +1,15 @@
-/* Nombrar docs .jsx / .js con primera letra en may. pq si no ded */
-
 import AgeComponent from "./AgeComponent";
+import PropTypes from "prop-types";
 
-import classes from "./Welcome.module.scss";
+Welcome.propTypes = {
+    name: PropTypes.string,
+    age: PropTypes.number,
+};
 
 function Welcome({ name = "Guest", age }) {
     return (
         <>
-            <p className={classes.niceWelcome}>Welcome, <strong>{name}</strong></p>
+            <p className="niceWelcome">Welcome, <strong>{name}</strong></p>
             <AgeComponent age={age}></AgeComponent>
         </>
     );
