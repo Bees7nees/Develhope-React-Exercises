@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
-const useGithubUser = (username) => {
+const useGithubUser = ({ username }) => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -27,7 +27,7 @@ const useGithubUser = (username) => {
   return { user, error, loading, fetchUser };
 };
 
-export const GithubUser = ({ username }) => {
+export function GithubUser (username) {
   const { user, error, loading, fetchUser } = useGithubUser(username);
 
   if (loading) {
@@ -54,6 +54,6 @@ export const GithubUser = ({ username }) => {
       )}
     </>
   );
-};
+}
 
 GithubUser.propTypes = { username: PropTypes.string.isRequired };
