@@ -1,29 +1,59 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
-GithubUser.propTypes = {
-  username: PropTypes.string,
-};
+const useGithubUser = (username) => {
+  const [user, setUser] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-function GithubUser({ username }) {
-  const [userData, setUserData] = useState({});
-
-  useEffect(() => {
+  const fetchUser = () => {
+    setLoading(true);
     fetch(`https://api.github.com/users/${username}`)
       .then((response) => response.json())
-      .then((json) => setUserData(json))
-      .finally(() => {
-        console.log("Fetch process ended.");
+      .then((data) => {
+        setUser(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setError(error);
+        setLoading(false);
       });
+  };
+
+  useEffect(() => {
+    fetchUser();
   }, [username]);
+
+  return { user, error, loading, fetchUser };
+};
+
+export const GithubUser = ({ username }) => {
+  const { user, error, loading, fetchUser } = useGithubUser(username);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return (
+      <>
+        <p>Error: {error.message}</p>
+        <button onClick={fetchUser}>Try again</button>
+      </>
+    );
+  }
 
   return (
     <>
-      <p>{userData.name}</p>
-      <p>{userData.login}</p>
-      <img src={userData.avatar_url} alt="payaso" />
+      {user && (
+        <>
+          <p>{user.name}</p>
+          <p>{user.login}</p>
+          <img src={user.avatar_url} alt="Avatar" />
+        </>
+      )}
     </>
   );
-}
+};
 
-export default GithubUser;
+GithubUser.propTypes = { username: PropTypes.string.isRequired };
