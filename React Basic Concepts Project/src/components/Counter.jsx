@@ -9,46 +9,49 @@ Counter.propTypes = {
   initialValue: PropTypes.number,
 };
 
-export function Counter({ sumVal, subVal, resetVal }) {
-  const initialValue = 0;
-
+export function Counter({ initialValue, sumVal, subVal, resetVal }) {
   const [counter, setCounter] = useState(initialValue);
+  const [prevCounter, setPrevCounter] = useState(initialValue);
 
   let directionRef = useRef(null);
 
   let previousDirection = useRef(null);
 
   useEffect(() => {
-    if (counter > initialValue && previousDirection.current !== "up") {
+    if (counter > prevCounter && prevCounter >= initialValue && previousDirection.current !== "up") {
       directionRef.current = "up";
       previousDirection.current = directionRef.current;
       console.log(directionRef.current);
-    } else if (counter < initialValue && previousDirection.current !== "down") {
+    } else if (counter < prevCounter && prevCounter <= initialValue && previousDirection.current !== "down") {
       directionRef.current = "down";
       previousDirection.current = directionRef.current;
       console.log(directionRef.current);
     }
 
-    console.log(`Counter has changed to ${counter}`);
-  }, [counter, initialValue]);
+    console.log(`Counter is now ${counter}`);
+    console.log(`prevCounter was ${prevCounter}`);
+  }, [counter, prevCounter, initialValue]);
 
   function sumCounter() {
+    setPrevCounter(counter);
     setCounter(counter + sumVal);
   }
   function subCounter() {
+    setPrevCounter(counter);
     setCounter(counter - subVal);
   }
   function resetCounter() {
     setCounter(resetVal);
+    setPrevCounter(resetVal);
     directionRef.current = null;
   }
   return (
     <>
       <h3>Counter</h3>
-      <CounterDisplay ref={directionRef} counter={counter} initialValue={0} />
-      <button onClick={sumCounter}>+1</button>
+      <CounterDisplay ref={directionRef} counter={counter} />
+      <button onClick={sumCounter}>+{sumVal}</button>
       <span> </span>
-      <button onClick={subCounter}>-1</button>
+      <button onClick={subCounter}>-{subVal}</button>
       <span> </span>
       <button onClick={resetCounter}>Reset</button>
     </>
