@@ -3,14 +3,13 @@ import { LanguageContext } from "../contexts/LanguageContext";
 
 export function Clock() {
   const language = useContext(LanguageContext);
-
   const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const intervalId = setInterval(() => {
       setCurrentTime(new Date());
     }, 1000);
-    return () => clearInterval(interval);
+    return () => clearInterval(intervalId);
   }, []);
 
   return (
