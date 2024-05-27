@@ -17,6 +17,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Welcome />} />
         <Route path="/counter" element={<Counter />} />
+        {/* Aquí es donde he anidado las rutas. Cuando la ruta es /users, 
+        el componente GitHubUserList se renderiza. Pero cuando la ruta es 
+        /:username, el componente ShowGithubUser no se renderiza.*/}
         <Route path="/users" element={<GitHubUserList />}>
           <Route index element={<p>Please select a user</p>} />
           <Route path=":username" element={<ShowGithubUser />} />
