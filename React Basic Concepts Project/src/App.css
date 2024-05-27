@@ -22,7 +22,11 @@ a {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
-  padding: 2rem;
+  margin: 1rem;
+}
+
+ul {
+  text-align: left;
 }
 
 @keyframes logo-spin {
