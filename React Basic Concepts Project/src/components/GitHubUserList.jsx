@@ -19,7 +19,7 @@ function GitHubUserList() {
       {users.map((user) => (
         <li key={user.id}>
           {user.login} :{" "}
-          <Link to={`/${user.login}`}>{user.html_url}</Link>
+          <Link to={`/users/${user.login}`}>{user.html_url}</Link>
         </li>
       ))}
     </ul>
